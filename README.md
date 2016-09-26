@@ -1,179 +1,101 @@
-<p align="center">
-  <a href="http://courses.angularclass.com/courses/angular-2-fundamentals" target="_blank">
-    <img width="438" alt="Angular 2 Fundamentals" src="https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png">
-  </a>
-</p>
+<img src="https://raw.githubusercontent.com/formly-js/angular-formly/master/other/logo/angular-formly-logo-64px.png" alt="angular-formly logo" title="angular-formly" align="right" width="64" height="64" />
 
----
+## [angular-formly](http://docs.angular-formly.com)
 
-<p align="center">
-  <a href="https://angularclass.com" target="_blank">
-    <img src="https://cloud.githubusercontent.com/assets/1016365/9864650/93a5660a-5b00-11e5-8716-a0d538d12913.png" alt="ng6-starter" width="480px;" >
-  </a>
-  <!-- old img url: http://res.cloudinary.com/angularclass/image/upload/v1431802814/ng6_vrmd60.png -->
-</p>
+[THIS PROJECT NEEDS A MAINTAINER](https://github.com/formly-js/angular-formly/issues/638)
 
-# NG6 [![Join Slack](https://img.shields.io/badge/slack-join-brightgreen.svg)](https://angularclass.com/slack-join) [![Join the chat at https://gitter.im/angularclass/NG6-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angularclass/NG6-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Status:
+[![npm version](https://img.shields.io/npm/v/angular-formly.svg?style=flat-square)](https://www.npmjs.org/package/angular-formly)
+[![npm downloads](https://img.shields.io/npm/dm/angular-formly.svg?style=flat-square)](http://npm-stat.com/charts.html?package=angular-formly&from=2015-01-01)
+[![Build Status](https://img.shields.io/travis/formly-js/angular-formly.svg?style=flat-square)](https://travis-ci.org/formly-js/angular-formly)
+[![Code Coverage](https://img.shields.io/codecov/c/github/formly-js/angular-formly.svg?style=flat-square)](https://codecov.io/github/formly-js/angular-formly)
 
-> The de facto starter repo for building scalable apps with [Angular](https://angularjs.org), [ES6](https://git.io/es6features), and [Webpack](http://webpack.github.io/)
+Links:
+[![Documentation](https://img.shields.io/badge/API-Docs-red.svg?style=flat-square)](http://docs.angular-formly.com)
+[![Examples](https://img.shields.io/badge/formly-examples-green.svg?style=flat-square)](http://angular-formly.com)
+[![egghead.io lessons](https://img.shields.io/badge/egghead-lessons-blue.svg?style=flat-square)](https://egghead.io/playlists/advanced-angular-forms-with-angular-formly)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/formly-js/angular-formly?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/formly-js/angular-formly/releases)
+[![PRs Welcome](https://img.shields.io/badge/prs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-This repo serves as a minimal starter for those looking to get up-and-running with Angular and ES6, using [Gulp](http://gulpjs.com/) and [Webpack](http://webpack.github.io/) for the build process.
-**This seed is not a Yeoman generator.** It's a minimal starter with tasks for building the boilerplate. **These are its features**:
-* The best practice in directory/file organization for Angular (allowing for infinite horizontal app scaling)
-* A ready-to-go build system for working with [ES6](https://git.io/es6features)
-* Tasks for generating additional boilerplate Angular components
-* A full testing system in place
-* [Stylus](https://learnboost.github.io/stylus/) support
 
-**Check out the [JSPM version](https://github.com/angularclass/NG6-starter/tree/jspm)--an alternative to Webpack as an ES6 build system.**
+angular-formly is an AngularJS module which has a directive to help customize and render JavaScript/JSON configured forms.
+The `formly-form` directive and the `formlyConfig` service are very powerful and bring unmatched maintainability to your
+application's forms.
 
-> If you're looking for a preliminary [Angular 2](https://angular.io/) build, please use the [angular2-webpack-starter](https://github.com/angularclass/angular2-webpack-starter).
-___
-
-# Table of Contents
-* [Walkthrough](#walkthrough)
-    * [Build System](#build-system)
-    * [File Structure](#file-structure)
-    * [Testing Setup](#testing-setup)
-* [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Installing](#installing)
-    * [Running the App](#running-the-app)
-        * [Gulp Tasks](#gulp-tasks)
-        * [Testing](#testing)
-		* [Generating Components](#generating-components)		
-* [Starter Kit Support and Questions](#starter-kit-support-and-questions)
-
-# Walkthrough
-## Build System
-NG6 uses Gulp and Webpack together for its build system. Yes, you don't need Gulp if you're using Webpack. This is true if your build system is only responsible for file manipulation. However, ours is not.
-
-`Webpack` handles all file-related concerns:
-* Transpiling from ES6 to ES5 with `Babel`
-* Loading HTML files as modules
-* Transpiling stylesheets and appending them to the DOM
-* Refreshing the browser and rebuilding on file changes
-* Hot module replacement for transpiled stylesheets
-* Bundling the app
-* Loading all modules
-* Doing all of the above for `*.spec.js` files as well
-
-`Gulp` is the orchestrator:
-* Starting and calling Webpack
-* Starting a development server (yes, Webpack can do this too)
-* Generating boilerplate for the Angular app
-
-**Check out the [JSPM version](https://github.com/angularclass/NG6-starter/tree/jspm)--an alternative to Webpack as an ES6 build system.**
-
-## File Structure
-We use a componentized approach with NG6. This will be the eventual standard (and particularly helpful, if using Angular's new router) as well as a great way to ensure a tasteful transition to Angular 2, when the time is ripe. Everything--or mostly everything, as we'll explore (below)--is a component. A component is a self-contained concern--may it be a feature or strictly-defined, ever-present element of the UI (such as a header, sidebar, or footer). Also characteristic of a component is that it harnesses its own stylesheets, templates, controllers, routes, services, and specs. This encapsulation allows us the comfort of isolation and structural locality. Here's how it looks:
-```
-client
-⋅⋅app/
-⋅⋅⋅⋅app.js * app entry file
-⋅⋅⋅⋅app.html * app template
-⋅⋅⋅⋅common/ * functionality pertinent to several components propagate into this directory
-⋅⋅⋅⋅components/ * where components live
-⋅⋅⋅⋅⋅⋅components.js * components entry file
-⋅⋅⋅⋅⋅⋅home/ * home component
-⋅⋅⋅⋅⋅⋅⋅⋅home.js * home entry file (routes, configurations, and declarations occur here)
-⋅⋅⋅⋅⋅⋅⋅⋅home.component.js * home "directive"
-⋅⋅⋅⋅⋅⋅⋅⋅home.controller.js * home controller
-⋅⋅⋅⋅⋅⋅⋅⋅home.styl * home styles
-⋅⋅⋅⋅⋅⋅⋅⋅home.html * home template
-⋅⋅⋅⋅⋅⋅⋅⋅home.spec.js * home specs (for entry, component, and controller)
+```html
+<form name="vm.someForm" ng-submit="vm.handleSubmit()">
+  <formly-form model="vm.model" fields="vm.fields" options="vm.options">
+    <button type="submit" ng-disabled="vm.someForm.$invalid">Submit</button>
+    <button type="button" ng-click="vm.options.resetModel()">Reset</button>
+  </formly-form>
+</form>
 ```
 
-## Testing Setup
-All tests are also written in ES6. We use Webpack to take care of the logistics of getting those files to run in the various browsers, just like with our client files. This is our testing stack:
-* Karma
-* Webpack + Babel
-* Mocha
-* Chai
+From there, it's just JavaScript. Allowing for DRY, maintainable, reusable forms.
 
-To run tests, type `npm test` or `karma start` in the terminal. Read more about testing [below](#testing).
+## [Learning](http://learn.angular-formly.com)
 
-# Getting Started
-## Dependencies
-Tools needed to run this app:
-* `node` and `npm`
-Once you have these, install the following as globals:  
-`npm install -g gulp karma karma-cli webpack`
+### Egghead.io Lessons
 
-## Installing
-* `fork` this repo
-* `clone` your fork
-* `npm install -g gulp karma karma-cli webpack` install global cli dependencies
-* `npm install` to install dependencies
+I'm an [egghead.io](https://egghead.io/) author and I have made a handful of lessons available there for free [here](https://egghead.io/playlists/advanced-angular-forms-with-angular-formly)
 
-## Running the App
-NG6 uses Gulp to build and launch the development environment. After you have installed all dependencies, you may run the app. Running `gulp` will bundle the app with `webpack`, launch a development server, and watch all files. The port will be displayed in the terminal.
- 
-### Gulp Tasks
-Here's a list of available tasks:
-* `webpack`
-  * runs Webpack, which will transpile, concatenate, and compress (collectively, "bundle") all assets and modules into `dist/bundle.js`. It also prepares `index.html` to be used as application entry point, links assets and created dist version of our application.
-* `serve`
-  * starts a dev server via `webpack-dev-server`, serving the client folder.
-* `watch`
-  * alias of `serve`
-* `default` (which is the default task that runs when typing `gulp` without providing an argument)
-	* runs `serve`.
-* `component`
-  * scaffolds a new Angular component. [Read below](#generating-components) for usage details.
-  
-### Testing
-To run the tests, run `npm test` or `karma start`.
+### NG-NL Talk
 
-`Karma` combined with Webpack runs all files matching `*.spec.js` inside the `app` folder. This allows us to keep test files local to the component--which keeps us in good faith with continuing to build our app modularly. The file `spec.bundle.js` is the bundle file for **all** our spec files that Karma will run.
-
-Be sure to define your `*.spec.js` files within their corresponding component directory. You must name the spec file like so, `[name].spec.js`. If you don't want to use the `.spec.js` suffix, you must change the `regex` in `spec.bundle.js` to look for whatever file(s) you want.
-`Mocha` is the testing suite and `Chai` is the assertion library. If you would like to change this, see `karma.conf.js`.
+[![JavaScript Powered Forms](other/ng-nl-talk.png)](http://youtu.be/o90TMDL3OYc)
 
 ### Examples
 
-It's always easier to learn something if you have an examples. Here is a list of repos which based on this starter:
+[The website](http://angular-formly.com/) is full of tons of examples.
 
- - [TodoMVC Example App](https://github.com/AngularClass/NG6-todomvc-starter)
+### More
 
-### Generating Components
-Following a consistent directory structure between components offers us the certainty of predictability. We can take advantage of this certainty by creating a gulp task to automate the "instantiation" of our components. The component boilerplate task generates this:
-```
-⋅⋅⋅⋅⋅⋅componentName/
-⋅⋅⋅⋅⋅⋅⋅⋅componentName.js // entry file where all its dependencies load
-⋅⋅⋅⋅⋅⋅⋅⋅componentName.component.js
-⋅⋅⋅⋅⋅⋅⋅⋅componentName.controller.js
-⋅⋅⋅⋅⋅⋅⋅⋅componentName.html
-⋅⋅⋅⋅⋅⋅⋅⋅componentName.styl // scoped to affect only its own template
-⋅⋅⋅⋅⋅⋅⋅⋅componentName.spec.js // contains passing demonstration tests
-```
+Find more resources at [learn.angular-formly.com](http://learn.angular-formly.com)
 
-You may, of course, create these files manually, every time a new module is needed, but that gets quickly tedious.
-To generate a component, run `gulp component --name componentName`.
+## Documentation
 
-The parameter following the `--name` flag is the name of the component to be created. Ensure that it is unique or it will overwrite the preexisting identically-named component.
+Find all the documentation at [docs.angular-formly.com](http://docs.angular-formly.com).
 
-The component will be created, by default, inside `client/app/components`. To change this, apply the `--parent` flag, followed by a path relative to `client/app/components/`.
+## Plugins
 
-For example, running `gulp component --name signup --parent auth` will create a `signup` component at `client/app/components/auth/signup`.  
+Find all the plugins at [docs.angular-formly.com/page/plugins](http://docs.angular-formly.com/page/plugins)
 
-Running `gulp component --name footer --parent ../common` creates a `footer` component at `client/app/common/footer`.  
+## Getting Help
 
-Because the argument to `--name` applies to the folder name **and** the actual component name, make sure to camelcase the component names.
+Please don't file an issue unless you feel like you've found a bug or have a feature request. Instead, go to [help.angular-formly.com](http://help.angular-formly.com) and follow the instructions.
 
-# Starter Kit Support and Questions
-> Contact us, anytime, regarding anything about this project.
+## Roadmap
 
-* [Gitter: angularclass/NG6-starter](https://gitter.im/angularclass/NG6-starter)
-* [Twitter: @AngularClass](https://twitter.com/AngularClass)
+See the [issues labeled enhancement](https://github.com/formly-js/angular-formly/labels/enhancement)
 
-___
+## Contributing
 
-enjoy — **AngularClass** 
+Please see the [CONTRIBUTING Guidelines](CONTRIBUTING.md).
 
-<br><br>
+**Note**: This projects adheres to a [Code of Conduct](CODE_OF_CONDUCT.md).
 
-[![AngularClass](https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png  "Angular Class")](https://angularclass.com)
-##[AngularClass](https://angularclass.com)
-> Learn AngularJS, Angular 2, and Modern Web Development from the best.
-> Looking for corporate Angular training, want to host us, or Angular consulting? hello@angularclass.com
+## Financial Support
+
+Some have expressed a desire to contribute financially as a way of expressing gratitude. I appreciate anything you (or
+your company) would be willing to contribute :-) You can support me [here](https://www.patreon.com/kentcdodds). Thanks!
+
+## Bookmark Links
+
+You can bookmark these :-)
+
+- [http://help.angular-formly.com](http://help.angular-formly.com)
+- [http://question.angular-formly.com](http://question.angular-formly.com)
+- [http://issue.angular-formly.com](http://issue.angular-formly.com)
+- [http://new-example.angular-formly.com](http://new-example.angular-formly.com)
+- [http://egghead.angular-formly.com](http://egghead.angular-formly.com)
+- [http://chat.angular-formly.com](http://chat.angular-formly.com)
+- [http://mailing-list.angular-formly.com](http://mailing-list.angular-formly.com)
+- [http://learn.angular-formly.com](http://learn.angular-formly.com)
+- [http://questions.angular-formly.com](http://questions.angular-formly.com)
+
+## Thanks
+
+A special thanks to [Nimbly](http://gonimbly.com) for creating angular-formly.
+This library is maintained (with love) by me, [Kent C. Dodds](https://twitter.com/kentcdodds).
+Thanks to all [contributors](https://github.com/formly-js/angular-formly/graphs/contributors)!
+
